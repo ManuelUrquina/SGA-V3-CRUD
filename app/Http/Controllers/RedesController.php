@@ -2,19 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\TblVigencia;
+use App\Models\TblRedes;
 use Illuminate\Http\Request;
 
-class VigenciaController extends Controller
+class RedesController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
-        $vigencias = TblVigencia::get();
-        return view('vigencias.vigencias', ['vigencias' => $vigencias]);
-
+        $redes = TblRedes::get();
+        return view('redes', ['redes' => $redes]);
+        //
     }
 
     /**
@@ -22,7 +22,7 @@ class VigenciaController extends Controller
      */
     public function create()
     {
-        return view('vigencias.crearVigencia');
+        return view('redes.crearRedes');
     }
 
     /**
@@ -30,9 +30,9 @@ class VigenciaController extends Controller
      */
     public function store(Request $request)
     {
-        $vigencia = TblVigencia::create($request->all());
+        $redes = TblRedes::create($request->all());
 
-        return redirect()->route('vigencias.index');
+        return redirect()->route('redes.index');
     }
 
     /**
@@ -48,9 +48,7 @@ class VigenciaController extends Controller
      */
     public function edit(string $id)
     {
-        $vigencia = TblVigencia::find($id);
-
-        return view('vigencias.editarVigencia', ['vigencia' => $vigencia]);
+        //
     }
 
     /**
@@ -58,11 +56,7 @@ class VigenciaController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        $vigencia = TblVigencia::find($id);
-
-        $vigencia->update($request->all());
-
-        return redirect()->route('vigencias.index');
+        //
     }
 
     /**
@@ -70,9 +64,6 @@ class VigenciaController extends Controller
      */
     public function destroy(string $id)
     {
-        $vigencia = TblVigencia::find($id);
-        $vigencia->delete();
-
-        return redirect()->back();
+        //
     }
 }

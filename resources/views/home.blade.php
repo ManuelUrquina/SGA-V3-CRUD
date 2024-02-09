@@ -18,16 +18,16 @@
 
 @section('content')
 <!-- notificacion  -->
-@if (session()->has('acceso_denegado'))     
+@if (session()->has('acceso_denegado'))
     <div class="alert alert-danger " role="alert">
-        <strong>{{ session('acceso_denegado') }}</strong> 
-    </div>           
+        <strong>{{ session('acceso_denegado') }}</strong>
+    </div>
 @endif
 
 <div class="fondo ">
     <div class="row g-3">
         <div class="col-md-3">
-            <x-adminlte-small-box title="{{ count($centros) }}" text="Centros" icon="fas fa-synagogue text-dark" theme="success" url="/centros" url-text="Ver centros"/>                           
+            <x-adminlte-small-box title="{{ count($centros) }}" text="Centros" icon="fas fa-synagogue text-dark" theme="success" url="/centros" url-text="Ver centros"/>
         </div>
         <div class="col-md-3">
             <x-adminlte-small-box title="{{ $archivos }}" text="Archivos" icon="fas fa-file-alt text-dark" theme="success" url="#" url-text="Ver archivos"/>
@@ -37,17 +37,19 @@
         </div>
         <div class="col-md-3 ">
             <x-adminlte-small-box title="{{$conteoProgramas}}" text="Programas" icon="fas fa-graduation-cap text-dark" theme="success" url="/programas" url-text="Ver programas" />
-        </div>                                         
+        </div>
         <div class="col-md-3 ">
             <x-adminlte-small-box title="{{ $fichas }}" text="Fichas" icon="fas fa-tags text-dark" theme="success" url="#" url-text="Ver fichas" />
-        </div>                                         
+        </div>
         <div class="col-md-3 ">
             <x-adminlte-small-box title="{{ $vigencias }}" text="viegencia" icon="fas fa-folder text-dark" theme="success" url="#" url-text="Ver vigencia" />
-        </div>                                         
+        </div>
         <div class="col-md-3 ">
             <x-adminlte-small-box title="{{ $instructores }}" text="Instructores" icon="fas fa-id-badge text-dark" theme="success" url="#" url-text="Ver instructores"/>
-        </div>                                                                                
-    </div>        
+        </div>
+
+
+    </div>
 </div>
 
 @stop
@@ -62,7 +64,7 @@
         /* background-repeat: no-repeat; */
     }
 </style>
-    
+
 @endsection
 
 @push('js')
