@@ -61,6 +61,10 @@
                             {{-- <input type="text" class="form-control" name="cri_Denominacion" placeholder="Criterio"> --}}
                             <textarea class="form-control" name="cri_Denominacion" rows="2" placeholder="Criterio"></textarea>
                         </div>
+                        <div class="col-md-12">
+                            <label class="form-label">Observacion:</label>
+                            <textarea class="form-control" name="cri_Observacion" rows="2" placeholder="Observacion"></textarea>
+                        </div>
                         <hr>
                         <p class="text-decoration-underline fw-bolder fs-5">Conceptos y Principios</p>
                         <div class="col-md-12">
@@ -68,12 +72,22 @@
                             {{-- <input type="text" class="form-control" name="con_Denominacion"  placeholder="Conceptos y Principios"> --}}
                             <textarea class="form-control" name="con_Denominacion" rows="2" placeholder="Conceptos y Principios"></textarea>
                         </div>
+                        <div class="col-md-12">
+                            <label for="con_Observacion" class="form-label">Observacion:</label>
+                            {{-- <input type="text" class="form-control" name="con_Denominacion"  placeholder="Conceptos y Principios"> --}}
+                            <textarea class="form-control" name="con_Observacion" rows="2" placeholder="Observacion"></textarea>
+                        </div>
                         <hr>
                         <p class="text-decoration-underline fw-bolder fs-5">Procesos</p>
                         <div class="">
                             <label class="form-label">Procesos:</label>
                             {{-- <input type="text" class="form-control" name="" id="" aria-describedby="helpId" placeholder="Proceso"> --}}
                             <textarea class="form-control" name="pro_Denominacion" rows="2" placeholder="Procesos"></textarea>
+                        </div>
+                        <div class="">
+                            <label class="form-label">Observacion:</label>
+                            {{-- <input type="text" class="form-control" name="" id="" aria-describedby="helpId" placeholder="Proceso"> --}}
+                            <textarea class="form-control" name="pro_Observacion" rows="2" placeholder="Observacion"></textarea>
                         </div>
                         <hr>
                         <p class="text-decoration-underline fw-bolder fs-5">Perfil Instructor</p>
@@ -99,6 +113,10 @@
                         <div class="col-md-12">
                             <label class="form-label">Material:</label>
                             <textarea class="form-control" name="mat_Denominacion" rows="2" placeholder="Material"></textarea>
+                        </div>
+                        <div class="col-md-12">
+                            <label class="form-label">Observacion:</label>
+                            <textarea class="form-control" name="mat_Observacion" rows="2" placeholder="Observacion"></textarea>
                         </div>
 
                         </div>

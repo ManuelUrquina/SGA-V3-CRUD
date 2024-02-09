@@ -15,7 +15,8 @@
     </div>
 
     <div class="card-body">
-        <form action="{{route('resultadoAprendizaje.update',$rap->Codigo)}}" method="POST">
+        @foreach($rap as $resultado)
+        <form action="{{route('resultadoAprendizaje.update',$resultado->Codigo)}}" method="POST">
             @csrf
             @method('PUT')
                 <div class="row g-3">
@@ -25,7 +26,7 @@
                         <select class="form-select" id="programa" onchange="cargarCompetencias(this.value)">
                             <option selected disabled value=""> Elige el programa </option>
                             @foreach ($programas as $programa)
-                                <option value="{{ $programa->Codigo }}" @selected($programa->Codigo == $rap->Codigo_competencias)>
+                                <option value="{{ $programa->Codigo }}" @selected($programa->Codigo == $resultado->Codigo_competencias)>
                                     {{ $programa->prog_codigoPrograma }} - {{ $programa->prog_Denominacion }}
                                 </option>
                             @endforeach
@@ -37,7 +38,7 @@
                         <select name="Codigo_competencias" id="competencia" class="form-select">
                             <option value="" selected disabled hidden>Elige la competencia</option>
                             @foreach($competencias as $competencia)
-                            <option value="{{$competencia->Codigo}}" @selected($competencia->Codigo == $rap->Codigo_competencias)>
+                            <option value="{{$competencia->Codigo}}" @selected($competencia->Codigo == $resultado->Codigo_competencias)>
                                 {{ $competencia->comp_codigoCompetencia }} - {{$competencia->comp_Denominacion}}
                             </option>
                             @endforeach
@@ -47,7 +48,7 @@
                     <p class="text-decoration-underline fw-bolder fs-5">Resultados De aprendizaje</p>
                     <div class="col-md-12">
                         <label class="form-label " >Resultados:</label>
-                        <textarea class="form-control" name="resul_Denominacion" rows="2" >{{ $rap->resul_Denominacion }}</textarea>
+                        <textarea class="form-control" name="resul_Denominacion" rows="2" >{{ $resultado->resul_Denominacion }}</textarea>
                     </div>
                     <hr>
                     <p class="text-decoration-underline fw-bolder fs-5">Criterios de evaluación</p>
@@ -59,38 +60,38 @@
                     <p class="text-decoration-underline fw-bolder fs-5">Conceptos y Principios</p>
                     <div class="col-md-12">
                         <label for="con_Denominacion" class="form-label">Conceptos y Principios:</label>
-                        <textarea class="form-control" name="con_Denominacion" rows="2">{{ $rap->conceptoPrincipios()->first()['con_Denominacion'] }}</textarea>
+                        <textarea class="form-control" name="con_Denominacion" rows="2">{{ $resultado->conceptoPrincipios()->first()['con_Denominacion'] }}</textarea>
                     </div>
                     <hr>
                     <p class="text-decoration-underline fw-bolder fs-5">Procesos</p>
                     <div class="">
                         <label class="form-label">Procesos:</label>
-                        <textarea class="form-control" name="pro_Denominacion" rows="2">{{ $rap->procesos()->first()['pro_Denominacion'] }}</textarea>
+                        <textarea class="form-control" name="pro_Denominacion" rows="2">{{ $resultado->procesos()->first()['pro_Denominacion'] }}</textarea>
                     </div>
                     <hr>
                     <p class="text-decoration-underline fw-bolder fs-5">Perfil Instructor</p>
                     <div class="col-md-6">
                         <label class="form-label">Requisitos académicos:</label>
-                        <textarea class="form-control" name="per_RequisitosAcademicos" rows="2">{{ $rap->perfiltecnicoInstructor()->first()['per_RequisitosAcademicos'] }}</textarea>
+                        <textarea class="form-control" name="per_RequisitosAcademicos" rows="2">{{ $resultado->perfiltecnicoInstructor()->first()['per_RequisitosAcademicos'] }}</textarea>
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">Experiencia:</label>
-                        <textarea class="form-control" name="per_Experiencia" rows="2">{{ $rap->perfiltecnicoInstructor()->first()['per_Experiencia'] }}</textarea>
+                        <textarea class="form-control" name="per_Experiencia" rows="2">{{ $resultado->perfiltecnicoInstructor()->first()['per_Experiencia'] }}</textarea>
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">Competecnias Mínimas:</label>
-                        <textarea class="form-control" name="per_CompetenciasMinimas" rows="2">{{ $rap->perfiltecnicoInstructor()->first()['per_CompetenciasMinimas'] }}</textarea>
+                        <textarea class="form-control" name="per_CompetenciasMinimas" rows="2">{{ $resultado->perfiltecnicoInstructor()->first()['per_CompetenciasMinimas'] }}</textarea>
                     </div>
                     <div class="col-md-6">
                         <label class="form-label">Observaciones:</label>
-                        <textarea class="form-control" name="per_Observacion" rows="2">{{ $rap->perfiltecnicoInstructor()->first()['per_Observacion'] }}</textarea>
+                        <textarea class="form-control" name="per_Observacion" rows="2">{{ $resultado->perfiltecnicoInstructor()->first()['per_Observacion'] }}</textarea>
                     </div>
 
                     <hr>
                     <p class="text-decoration-underline fw-bolder fs-5">Material Requerido</p>
                     <div class="col-md-12">
                         <label class="form-label">Material:</label>
-                        <textarea class="form-control" name="mat_Denominacion" rows="2">{{ $rap->materialRequerido()->first()['mat_Denominacion'] }}</textarea>
+                        <textarea class="form-control" name="mat_Denominacion" rows="2">{{ $resultado->materialRequerido()->first()['mat_Denominacion'] }}</textarea>
                     </div>
 
                     </div>
@@ -99,6 +100,7 @@
                     <button type="submit" class="btn btn-secondary">Editar</button>
                 </div>
         </form>
+    @endforeach
     </div>
 </div>
 @stop
