@@ -22,7 +22,7 @@
                 <div class="row g-3">
                     <div class="col-md-6">
                         <label class="form-label" >Código:</label>
-                        <input type="number" name="fich_Codigo" class="form-control" placeholder="Nombre" value="{{ $ficha->fich_Codigo }}" required >
+                        <input type="number" name="fich_Codigo" class="form-control" placeholder="Codigo" value="{{ $ficha->Codigo }}" required >
                     </div>
                     <div class="col-md-6">
                         <label class="form-label" >Inicio:</label>
@@ -64,7 +64,7 @@
                         <select name="Codigo_centro" class="form-select" aria-label="Default select example">
                             <option selected>Selecciona el centro</option>
                             @foreach ($centros as $centro)
-                                <option value="{{ $centro->Codigo }}" @selected($centro->Codigo_centro == $ficha->Codigo_centro)>
+                                <option value="{{ $centro->Codigo }}" @selected($centro->Codigo == $ficha->Codigo_centro)>
                                     {{ $centro->cent_Denominacion }}
                                 </option>
                             @endforeach
