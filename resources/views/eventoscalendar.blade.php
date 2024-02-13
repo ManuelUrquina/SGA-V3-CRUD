@@ -132,11 +132,12 @@
                                 <label for="Codigo_ficha" class="form-lavel">Ficha</label>
                                 <select class="form-select" name="Codigo_ficha" id="Codigo_ficha">
                                     <option class="form-select" selected disabled value="">Elige la ficha</option>
-                                    @foreach ($fichas as $ficha)
-                                        <option value="{{ $ficha->Codigo }}">
-                                            {{ $ficha->fich_Codigo }} - {{ $ficha->Codigo_programa }}
+                                    @foreach ($join as $joi)
+                                        <option value="{{ $joi->Codigo }}">
+                                            {{ $joi->Codigo }} - {{ $joi->prog_Denominacion }}
                                         </option>
                                     @endforeach
+
                                 </select>
                             </div>
 
@@ -145,7 +146,7 @@
                                 <select class="form-select" name="Codigo_competencia" id="Codigo_competencia">
                                     <option selected disabled value="">Elige la competencia</option>
                                     @foreach ($competencias as $competencia)
-                                        <option value="{{ $competencia->Codigo }}">
+                                        <option value="{{ $competencia->comp_codigoCompetencia}}">
                                             {{ $competencia->comp_codigoCompetencia }} -
                                             {{ $competencia->comp_Denominacion }} - {{ $competencia->comp_DuracionEstimada }} horas
                                         </option>
