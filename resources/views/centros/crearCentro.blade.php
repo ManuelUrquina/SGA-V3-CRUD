@@ -23,7 +23,7 @@
 
                     <div class="col-md-6">
                         <label class="form-label" >Nombre:</label>
-                        <input type="text" name="cent_Denominacion" class="form-control" placeholder="Nombre" value="{{$test}}">
+                        <input type="text" name="cent_Denominacion" class="form-control" placeholder="Nombre">
                         @error('cent_Denominacion')
                         <p class="alert alert-danger mt-2" role="alert">
                             {{ $message }}

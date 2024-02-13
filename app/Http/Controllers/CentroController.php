@@ -32,8 +32,8 @@ class CentroController extends Controller
 
         $regionales = TblRegionales::get();
         //return view('centros.crearCentro', ['regionales' => $regionales]);
-        dd($regionales);
-        return view('centros.crearCentro', compact('regionales', ));
+       // dd($regionales);
+        return view('centros.crearCentro', compact('regionales'));
     }
 
     /**

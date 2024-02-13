@@ -16,7 +16,6 @@
     </div>
 
     <div class="card-body">
-        @foreach($vigencias as $vigen)
         <form action="{{route('vigencias.store')}}" method="POST" >
             @csrf
                 <div class="row g-3">
@@ -46,9 +45,12 @@
                     </div>
 
                     <div class="col-md-6">
-                        <label>Red:</label>
-                        <input type="text" name="" class="form-control" placeholder="Red" >
-                    </div>
+                        <label class="form-label" >Regional:</label>
+                        <select class="form-control" name="Codigo">
+                            @foreach ($red as $re)
+                                <option value="{{ $re -> Codigo }}"> {{ $re -> red_Denominacion }} ({{ $re -> Codigo }}) </option>
+                            @endforeach
+                        </select>
 
                 </div>
 
@@ -56,7 +58,6 @@
                     <button type="submit" class="btn btn-secondary">Crear</button>
                 </div>
         </form>
-        @endforeach
     </div>
 </div>
 @stop
