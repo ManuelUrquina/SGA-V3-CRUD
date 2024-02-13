@@ -64,6 +64,10 @@ Route::resource('vigencias', VigenciaController::class);
 
 //Raps
 Route::resource('resultadoAprendizaje', ResultadoAprendizajeController::class);
+
+// rutas Regionales
+Route::resource('regionales', \App\Http\Controllers\RegionalesController::class);
+
 // rura para los select de programa y competencia
 Route::get('/optener-competencias/{programaId}', [ResultadoAprendizajeController::class, 'optenerCompetencia']);
 
