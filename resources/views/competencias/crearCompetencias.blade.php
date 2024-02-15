@@ -53,7 +53,7 @@
                             <select name="Codigo_programa" class="form-select" required>
                                 <option selected value=""> Elige el programa </option>
                                 @foreach ($programas as $programa)
-                                    <option value="{{ $programa->Codigo }}" >
+                                    <option value="{{ $programa->prog_codigoPrograma }}" >
                                         {{ $programa->prog_Denominacion }}
                                     </option>
                                 @endforeach

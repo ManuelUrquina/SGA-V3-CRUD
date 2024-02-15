@@ -51,7 +51,7 @@
                                     {{-- -{{ $competencia->programarelacionado->prog_Denominacion }} --}}
                                     @if ($competencia->Codigo_programa && $competencia->programarelacionado)
                                         @php
-                                            $programaRelacionado = $competencia->programarelacionado->where('Codigo', $competencia->Codigo_programa)->first();
+                                            $programaRelacionado = $competencia->programarelacionado->where('prog_codigoPrograma', $competencia->Codigo_programa)->first();
                                         @endphp
 
                                         @if ($programaRelacionado)
