@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 
 class ArchivoController extends Controller
 {
+
     public function index() {
         $archivos = Archivo::get();
 
@@ -39,7 +40,7 @@ class ArchivoController extends Controller
 
     //     // $rutaArchivo = $archivo->arc_url_descarga;
     //     $rutaArchivo = storage_path('app/public/' . $archivo->arc_url_descarga);
-        
+
     //     if (file_exists($rutaArchivo)) {
     //         return response()->download($rutaArchivo);
     //         // return response()->file($rutaArchivo, ['Content-Disposition' => 'attachment']);

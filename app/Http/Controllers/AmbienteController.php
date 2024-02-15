@@ -14,7 +14,6 @@ class AmbienteController extends Controller
      */
     public function index()
     {
-
             $ambientes = tblAmbiente::get();
             return view('ambientes.ambientes', ['ambientes' => $ambientes]);
 

@@ -56,6 +56,7 @@ Route::resource('fichas', FichaController::class);
 // Centros
 Route::resource('centros', CentroController::class);
 
+
 // Ambientes
 Route::resource('ambientes', AmbienteController::class);
 

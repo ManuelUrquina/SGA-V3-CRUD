@@ -13,6 +13,7 @@ class ResultadoAprendizajeController extends Controller
     /**
      * Display a listing of the resource.
      */
+
     public function index()
     {
         $raps = tblResultadoAprendizaje::get();

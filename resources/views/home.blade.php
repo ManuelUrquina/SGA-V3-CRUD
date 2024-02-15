@@ -24,6 +24,7 @@
     </div>
 @endif
 
+
 <div class="fondo ">
     <div class="row g-3">
         <div class="col-md-3">

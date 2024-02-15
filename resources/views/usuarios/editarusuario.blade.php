@@ -10,8 +10,9 @@
         <div class="col-12">
             <div>
                 <h2>Editar Usuario</h2>
-            </div>        
+            </div>
         </div>
+
 
         {{-- mensaje de error de campos requeridos --}}
         @if ($errors->any())
@@ -27,8 +28,8 @@
 
         <form action="{{route('usuarios.update', $usuario->id)}}" method="POST" >
             @csrf
-            @method('PUT')            
-                <div class="row g-3">                    
+            @method('PUT')
+                <div class="row g-3">
                     <div class="col-md-6">
                         <label class="form-label" >Nombre:</label>
                         <input type="text" name="name" class="form-control" placeholder="Nombre" value="{{$usuario->name}}" required >
@@ -47,19 +48,19 @@
                                     {{$role->name}}
                                 </option>
                             @endforeach
-                        </select>                  
+                        </select>
                     </div>
-                 
+
                     {{-- <div class="col-md-6">
                         <label>Contraseña:</label>
                         <input type="password " name="password" class="form-control" placeholder="contraseña" value="{{$usuario->password}}" required >
                     </div>                   --}}
-                                      
-                </div>               
-                
+
+                </div>
+
                 <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-2">
                     <button type="submit" class="btn btn-secondary">Actualizar Usuario</button>
-                </div>            
+                </div>
         </form>
 
         {{-- <p>{{ $input }}</p> --}}

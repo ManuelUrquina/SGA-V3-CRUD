@@ -22,6 +22,7 @@ class EventoController extends Controller
      */
     public function index()
     {
+
         $eventos = Evento::orderBy('start', 'desc')->get();
         $fichas = TblFichaCaracterizacion::get();
         $competencias = TblCompetencia::get();

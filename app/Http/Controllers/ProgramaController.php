@@ -26,7 +26,6 @@ class ProgramaController extends Controller
             return view('programas.programas', ['programas' => $programas, 'competencias' => $competencias]);
 
         } else {
-
             // Almacena un mensaje en la sesión
             session()->flash('acceso_denegado', 'Acceso denegado');
             return redirect()->route('home');

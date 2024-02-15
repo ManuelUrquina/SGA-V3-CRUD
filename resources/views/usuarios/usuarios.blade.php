@@ -37,6 +37,7 @@
                         <td>{{$usuario->roles()->first()->name ?? 'Sin rol'}}</td>
                         <th> {{ $usuario->fecha_vencimiento }}</th>
 
+
                         <td class="d-flex">
                             <a href="{{ route('usuarios.edit', $usuario) }}"
                                 class="btn btn-primary btn-sm mr-2"

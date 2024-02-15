@@ -14,6 +14,7 @@ class FichaController extends Controller
     /**
      * Display a listing of the resource.
      */
+
     public function index(){
         $fichas = TblFichaCaracterizacion::get();
         $hoy = Carbon::now();

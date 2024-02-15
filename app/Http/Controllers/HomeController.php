@@ -50,6 +50,7 @@ class HomeController extends Controller
                             'regionales'
                                         ));
 
+
         // return view('home');
     }
 }

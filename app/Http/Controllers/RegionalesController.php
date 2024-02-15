@@ -72,7 +72,6 @@ class RegionalesController extends Controller
         $this->validate($request, [
             'reg_Denominacion'=>'required|string'
         ]);
-
         $regionales = TblRegionales::find($id);
         $regionales->update($request->all());
         // dd($centro);

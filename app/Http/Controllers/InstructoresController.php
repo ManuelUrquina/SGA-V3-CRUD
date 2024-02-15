@@ -10,6 +10,7 @@ use Illuminate\Support\Carbon;
 
 class InstructoresController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      */
@@ -80,5 +81,5 @@ class InstructoresController extends Controller
 
         return redirect()->route('instructores.index');
     }
-    
+
 }

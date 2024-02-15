@@ -178,6 +178,7 @@
                                 </select>
                             </div>
 
+
                             <div class="col-md-12">
                                 <label class="form-lavel">RAP</label>
                                 <select class="form-select" name="Codigo_resultado_aprendizaje">

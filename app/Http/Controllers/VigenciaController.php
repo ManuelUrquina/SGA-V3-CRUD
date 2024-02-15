@@ -15,6 +15,7 @@ class VigenciaController extends Controller
         $vigencias = TblVigencia::get();
         return view('vigencias.vigencias', ['vigencias' => $vigencias]);
 
+
     }
 
     /**
