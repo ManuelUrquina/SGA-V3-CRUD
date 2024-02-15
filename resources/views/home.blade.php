@@ -30,7 +30,7 @@
             <x-adminlte-small-box title="{{ count($centros) }}" text="Centros" icon="fas fa-synagogue text-dark" theme="success" url="/centros" url-text="Ver centros"/>
         </div>
         <div class="col-md-3">
-            <x-adminlte-small-box title="{{ $archivos }}" text="Archivos" icon="fas fa-file-alt text-dark" theme="success" url="#" url-text="Ver archivos"/>
+            <x-adminlte-small-box title="{{ $archivos }}" text="Archivos" icon="fas fa-file-alt text-dark" theme="success" url="/guardar-archivo-index" url-text="Ver archivos"/>
         </div>
         <div class="col-md-3">
             <x-adminlte-small-box title="{{$usersCount}}" text="Usuarios" icon="fas fa-user-plus text-dark" theme="success" url="/usuarios" url-text="Ver usuarios"/>

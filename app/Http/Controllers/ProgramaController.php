@@ -14,7 +14,7 @@ class ProgramaController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index():View
+    public function index()
     {
         if (auth()->user()->hasPermissionTo('programas.index')) {
 
@@ -29,7 +29,7 @@ class ProgramaController extends Controller
 
             // Almacena un mensaje en la sesión
             session()->flash('acceso_denegado', 'Acceso denegado');
-            return redirect()->route('home'); // Redirige a la página anterior
+            return redirect()->route('home');
 
         }
     }

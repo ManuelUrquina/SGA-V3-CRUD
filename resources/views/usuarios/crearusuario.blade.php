@@ -11,7 +11,7 @@
         <div class=" col-12">
             <div>
                 <h2>Crear Usuario</h2>
-            </div>        
+            </div>
         </div>
 
         {{-- mensaje de error de campos requeridos --}}
@@ -28,8 +28,8 @@
 
         <div class="card-body">
             <form action="{{route('usuarios.store')}}" method="POST" >
-                @csrf            
-                    <div class="row g-3">                    
+                @csrf
+                    <div class="row g-3">
                         <div class="col-md-6">
                             <label class="form-label" >Nombre:</label>
                             <input type="text" name="name" class="form-control" placeholder="Nombre" required >
@@ -38,8 +38,8 @@
                             <label>Correo:</label>
                             <input type="text" name="email" class="form-control" placeholder="Correo" required >
                         </div>
-    
-                        <div class="col-md-4">                        
+
+                        <div class="col-md-4">
                             <label for="role_id">Rol:</label>
                             <select name="role_id" class="form-select" required>
                                 <option selected value=""> Elige el Rol </option>
@@ -48,23 +48,25 @@
                                         {{$role->name}}
                                     </option>
                                 @endforeach
-                            </select> 
-                        </div>                        
-    
-                        <div class="col-md-4">
-                            <label>Fecha de expiración:</label>
-                            <input type="datetime-local" name="fechaVencida" class="form-control" placeholder="Fecha" required >
-                        </div>                  
+                            </select>
+                        </div>
+
                         <div class="col-md-4">
                             <label>Contraseña:</label>
                             <input type="password" name="password" class="form-control" placeholder="contraseña" required >
-                        </div>                  
-                                          
-                    </div>               
-                    
+                        </div>
+
+                        <div class="col-md-4">
+                            <label>Fecha de expiración:</label>
+                            <input type="datetime-local" name="fecha_vencimiento" class="form-control" placeholder="Fecha" required >
+                        </div>
+
+
+                    </div>
+
                     <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-2">
                         <button type="submit" class="btn btn-secondary">Crear Usuario</button>
-                    </div>            
+                    </div>
             </form>
         </div>
 
@@ -78,5 +80,5 @@
 @stop
 
 @section('js')
-    
+
 @endsection
