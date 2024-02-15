@@ -31,10 +31,10 @@ class VigenciaController extends Controller
      */
     public function create()
     {
-        //TODO: Fix this
+
         $redes = TblRedes::get();
        // dd($red);
-        return view('vigencias.crearVigencia' ,['red' => $redes]);
+        return view('vigencias.crearVigencia' ,['redes' => $redes]);
     }
 
     /**
@@ -61,9 +61,9 @@ class VigenciaController extends Controller
     public function edit(string $id)
     {
         $vigencia = TblVigencia::find($id);
-        $red = TblRedes::get();
+        $redes = TblRedes::get();
 
-        return view('vigencia.editarVigencia', compact('vigencia','red'));
+        return view('vigencias.editarVigencia', compact('vigencia','redes'));
     }
 
     /**

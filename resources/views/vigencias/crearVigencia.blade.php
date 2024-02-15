@@ -45,19 +45,19 @@
                     </div>
 
                     <div class="col-md-6">
-                        <label class="form-label" >Regional:</label>
-                        <select class="form-control" name="Codigo">
-                            @foreach ($red as $re)
-                                <option value="{{ $re -> Codigo }}"> {{ $re -> red_Denominacion }} ({{ $re -> Codigo }}) </option>
-                            @endforeach
+                        <label class="form-label" >Red de Conocimiento:</label>
+                        <select class="form-control" name="Codigo_red">
+                            @foreach ($redes as $re)
+                                <option value="{{ $re -> Codigo }}"> ({{ $re -> Codigo }}) {{ $re -> red_Denominacion }}  </option>
                         </select>
-
+                        @endforeach
                 </div>
 
                 <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-2">
                     <button type="submit" class="btn btn-secondary">Crear</button>
                 </div>
         </form>
+
     </div>
 </div>
 @stop
