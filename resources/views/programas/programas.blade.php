@@ -50,7 +50,7 @@
                     <tbody >
                     @foreach ($programas as $programa )
                         <tr class="text-break" data-child="{{ json_encode($programa->datos_de_child_row) }}">
-                            <td> {{$programa->Codigo}} </td>
+                            <td> {{$programa->prog_codigoPrograma}} </td>
 
                             <td class="text-truncate" >{{$programa->prog_Denominacion}}</td>
                             <td>{{ $programa->prog_codigoPrograma }}</td>
@@ -72,7 +72,7 @@
                             <td>
                                 <a name="" id="" class="btn btn-outline-secondary btn-sm" href="#"
                                 role="button" data-bs-toggle="modal"
-                                data-bs-target="#modalCompetencias-{{ $programa->Codigo }}" >
+                                data-bs-target="#modalCompetencias-{{ $programa->prog_codigoPrograma}}" >
                                     ver competencias
                                 </a>
                                 {{-- @foreach ($programa->competencias()->where('Codigo_programa', $programa->Codigo)->get() as $competencia)
@@ -112,7 +112,7 @@
                                         class="btn btn-success btn-sm ml-2"
                                         onclick=""
                                         style="width: 30px; height: 30px; border-radius: 50%;"
-                                        data-bs-toggle="modal" data-bs-target="#modalProgramas-{{ $programa->Codigo }}"
+                                        data-bs-toggle="modal" data-bs-target="#modalProgramas-{{ $programa->prog_codigoPrograma }}"
                                     >
                                         <i class="fas fa-eye" style="margin-left: -2px"></i>
                                     </a>
@@ -128,7 +128,7 @@
 
     <!-- Modal programas -->
     @foreach ($programas as $programa )
-    <div class="modal fade" id="modalProgramas-{{ $programa->Codigo }}" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+    <div class="modal fade" id="modalProgramas-{{ $programa->prog_codigoPrograma}}" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -168,7 +168,7 @@
 
     <!-- Modal competencias -->
     @foreach ($programas as $programa)
-    <div class="modal fade" id="modalCompetencias-{{ $programa->Codigo }}" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
+    <div class="modal fade" id="modalCompetencias-{{ $programa->prog_codigoPrograma }}" tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" role="dialog" aria-labelledby="modalTitleId" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-xl" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -188,16 +188,17 @@
                           </tr>
                         </thead>
                         <tbody>
-                            @foreach ($programa->competencias as $competencia)
-                            <tr>
-                                <td>{{ $competencia->comp_codigoCompetencia }}</td>
-                              <td>{{ $competencia->comp_Denominacion }}</th>
-                              <td>{{ $competencia->comp_VersionNCl }}</td>
-                              <td>{{ $competencia->comp_DuracionEstimada }}</td>
-                              <td>{{ $competencia->comp_Creditos }}</td>
-                              <td>{{ $competencia->comp_Horas_FI }}</td>
-                              {{-- <td>{{ $competencia-> }}</td> --}}
-                            </tr>
+                            @foreach ($competencias as $competencia)
+                                @if ($competencia->Codigo_programa == $programa->prog_codigoPrograma)
+                                    <tr>
+                                        <td>{{ $competencia->comp_codigoCompetencia }}</td>
+                                        <td>{{ $competencia->comp_Denominacion }}</td>
+                                        <td>{{ $competencia->comp_VersionNCl }}</td>
+                                        <td>{{ $competencia->comp_DuracionEstimada }}</td>
+                                        <td>{{ $competencia->comp_Creditos }}</td>
+                                        <td>{{ $competencia->comp_Horas_FI }}</td>
+                                    </tr>
+                                @endif
                             @endforeach
                         </tbody>
                     </table>

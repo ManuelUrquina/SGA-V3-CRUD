@@ -46,9 +46,8 @@
                         <div class="col-md-6">
                             <label for="role_id">Programa:</label>
                             <select name="Codigo_programa" class="form-select" required>
-                                <option value=""> Elige el programa </option>
                                 @foreach ($programas as $programa)
-                                    <option value="{{ $programa->Codigo }}" @selected($programa->Codigo == $competencia->Codigo_programa) >
+                                    <option value="{{ $programa->prog_codigoPrograma }}" @selected($programa->prog_codigoPrograma == $competencia->Codigo_programa) >
                                         {{$programa->prog_Denominacion}}
                                     </option>
                                 @endforeach

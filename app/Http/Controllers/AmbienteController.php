@@ -14,8 +14,9 @@ class AmbienteController extends Controller
      */
     public function index()
     {
-        $ambientes = tblAmbiente::get();
-        return view('ambientes.ambientes', ['ambientes' => $ambientes]);
+            $ambientes = tblAmbiente::get();
+            return view('ambientes.ambientes', ['ambientes' => $ambientes]);
+
     }
 
     /**
@@ -75,7 +76,7 @@ class AmbienteController extends Controller
             'Codigo_tipo' => ['required'],
             'Codigo_estado'=>['required']
         ]);
-        
+
         $ambiente = tblAmbiente::find($id);
         $ambiente->update($request->all());
 

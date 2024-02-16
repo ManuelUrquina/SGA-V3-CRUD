@@ -24,6 +24,7 @@ class VigenciaController extends Controller
 
         return view('vigencias.vigencias', ['vigencias' => $vigencias]);
 
+
     }
 
     /**

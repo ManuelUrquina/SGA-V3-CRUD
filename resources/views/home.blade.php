@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'AdminLTE')
+@section('title', 'Inicio')
 
 @section('content_header')
 
@@ -24,13 +24,14 @@
     </div>
 @endif
 
+
 <div class="fondo ">
     <div class="row g-3">
         <div class="col-md-3">
             <x-adminlte-small-box title="{{ count($centros) }}" text="Centros" icon="fas fa-synagogue text-dark" theme="success" url="/centros" url-text="Ver centros"/>
         </div>
         <div class="col-md-3">
-            <x-adminlte-small-box title="{{ $archivos }}" text="Archivos" icon="fas fa-file-alt text-dark" theme="success" url="#" url-text="Ver archivos"/>
+            <x-adminlte-small-box title="{{ $archivos }}" text="Archivos" icon="fas fa-file-alt text-dark" theme="success" url="/guardar-archivo-index" url-text="Ver archivos"/>
         </div>
         <div class="col-md-3">
             <x-adminlte-small-box title="{{$usersCount}}" text="Usuarios" icon="fas fa-user-plus text-dark" theme="success" url="/usuarios" url-text="Ver usuarios"/>
@@ -38,6 +39,20 @@
         <div class="col-md-3 ">
             <x-adminlte-small-box title="{{$conteoProgramas}}" text="Programas" icon="fas fa-graduation-cap text-dark" theme="success" url="/programas" url-text="Ver programas" />
         </div>
+
+        <div class="col-md-3 ">
+            <x-adminlte-small-box title="{{ $fichas }}" text="Fichas" icon="fas fa-tags text-dark" theme="success" url="/fichas" url-text="Ver fichas" />
+        </div>
+        <div class="col-md-3 ">
+            <x-adminlte-small-box title="{{ $vigencias }}" text="viegencia" icon="fas fa-folder text-dark" theme="success" url="/vigencias" url-text="Ver vigencia" />
+        </div>
+        <div class="col-md-3 ">
+            <x-adminlte-small-box title="{{ $instructores }}" text="Instructores" icon="fas fa-id-badge text-dark" theme="success" url="/instructores" url-text="Ver instructores"/>
+        </div>
+        <div class="col-md-3 ">
+            <x-adminlte-small-box title="{{ $regionales }}" text="Regionales" icon="fas fa-map text-dark" theme="success" url="/regionales" url-text="Ver regionales"/>
+        </div>
+
         <div class="col-md-3 ">
             <x-adminlte-small-box title="{{ $fichas }}" text="Fichas" icon="fas fa-tags text-dark" theme="success" url="#" url-text="Ver fichas" />
         </div>

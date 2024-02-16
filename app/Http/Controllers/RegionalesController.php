@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\TblRegionales;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class RegionalesController extends Controller
 {
@@ -11,7 +13,9 @@ class RegionalesController extends Controller
      */
     public function index()
     {
-        //
+        $regionales = TblRegionales::get();
+
+        return view('Regionales.regionales', ['regionales' => $regionales]);
     }
 
     /**
@@ -19,7 +23,10 @@ class RegionalesController extends Controller
      */
     public function create()
     {
-        //
+        $regionales = TblRegionales::get();
+        //return view('centros.crearCentro', ['regionales' => $regionales]);
+        //dd($regionales);
+        return view('Regionales.crearRegionales', compact('regionales'));
     }
 
     /**
@@ -27,7 +34,13 @@ class RegionalesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'reg_Denominacion'=>'required|string'
+        ]);
+        //dd($request->all());
+        TblRegionales::create($request->all());
+
+        return redirect()->route('regionales.index');
     }
 
     /**
@@ -43,7 +56,12 @@ class RegionalesController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $regionales = TblRegionales::find($id);
+
+        //return view('centros.crearCentro', ['regionales' => $regionales]);
+
+        // return view('centros.crearCentro', compact('regionales', ));
+        return view('Regionales.editarRegionales', compact('regionales'));
     }
 
     /**
@@ -51,7 +69,14 @@ class RegionalesController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $this->validate($request, [
+            'reg_Denominacion'=>'required|string'
+        ]);
+        $regionales = TblRegionales::find($id);
+        $regionales->update($request->all());
+        // dd($centro);
+
+        return redirect()->route('regionales.index');
     }
 
     /**
@@ -59,6 +84,8 @@ class RegionalesController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $regionales = TblRegionales::find($id);
+        $regionales->delete();
+        return redirect()->back();
     }
 }

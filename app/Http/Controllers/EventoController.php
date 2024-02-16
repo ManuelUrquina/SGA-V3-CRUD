@@ -7,8 +7,10 @@ use App\Models\tblAmbiente;
 use App\Models\TblCompetencia;
 use App\Models\TblFichaCaracterizacion;
 use App\Models\TblInstructor;
+use App\Models\TblPrograma;
 use App\Models\tblResultadoAprendizaje;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
 
 use Carbon\Carbon; //para dar formato a varios datos
@@ -20,13 +22,18 @@ class EventoController extends Controller
      */
     public function index()
     {
+
         $eventos = Evento::orderBy('start', 'desc')->get();
         $fichas = TblFichaCaracterizacion::get();
         $competencias = TblCompetencia::get();
         $instructores = TblInstructor::get();
         $ambientes = tblAmbiente::get();
         $resultadoAprendisajes = tblResultadoAprendizaje::get();
-
+        $programas=TblPrograma::get();
+        $join = DB::table('tbl_ficha_caracterizacions')
+            ->join('tbl_programas', 'tbl_ficha_caracterizacions.Codigo_programa', '=', 'tbl_programas.prog_codigoPrograma')
+            ->select('tbl_programas.*', 'tbl_ficha_caracterizacions.*')
+            ->get();
 
         //cambiamos el formato de la fecha
         foreach ($eventos as $evento) {
@@ -38,7 +45,9 @@ class EventoController extends Controller
             'competencias' => $competencias,
             'instructores' => $instructores,
             'ambientes' => $ambientes,
-            'resultadoAprendisajes' => $resultadoAprendisajes
+            'resultadoAprendisajes' => $resultadoAprendisajes,
+            'programas'=>$programas,
+            'join'=>$join
         ]);
     }
 
@@ -68,7 +77,7 @@ class EventoController extends Controller
             'color' => 'required'
         ], $messages);
 
-        // 
+        //
         $request = Evento::create($request->all());
 
         // return redirect()->route('eventoscalendar.index');
@@ -92,12 +101,12 @@ class EventoController extends Controller
 
         //asignamos las relaciones de los modelos
         $evento->load(
-            'fichaCaracterizacion', 
-            'fichaCaracterizacion.programa', 
-            'fichaCaracterizacion.centro', 
-            'competencia', 
-            'instructor', 
-            'ambiente', 
+            'fichaCaracterizacion',
+            'fichaCaracterizacion.programa',
+            'fichaCaracterizacion.centro',
+            'competencia',
+            'instructor',
+            'ambiente',
             'resultadoAprendizaje'
         );
 
@@ -123,7 +132,7 @@ class EventoController extends Controller
      */
     public function destroy($id)
     {
-        // dd(Evento::find($id)); 
+        // dd(Evento::find($id));
         $evento = Evento::find($id)->delete();
         return response()->json($evento);
     }

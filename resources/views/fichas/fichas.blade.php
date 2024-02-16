@@ -21,7 +21,7 @@
         <table id="datatables_instructores" class="display shadow-sm text-capitalize " >
             <thead>
                 <tr>
-                    <th>#</th>
+
                     <th>Código</th>
                     <th>Inicio</th>
                     <th>Fin</th>
@@ -37,7 +37,6 @@
                 @foreach ($fichas as $ficha)
                     <tr>
                         <td>{{ $ficha->Codigo }}</td>
-                        <td>{{ $ficha->fich_Codigo }}</td>
                         <td>{{ $ficha->fich_Inicio }}</td>
                         <td>{{ $ficha->fich_Fin }}</td>
                         <td>{{ $ficha->fich_Etapa }} </td>

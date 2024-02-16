@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class TblRegionales extends Model
 {
     use HasFactory;
-    //protected $primaryKey = 'Codigo';
-    protected $fillable = ['Codigo', 'reg_Denominacion', 'created_at', 'updated_at'];
+    protected $table = 'tbl_regionales';
+    protected $primaryKey = 'Codigo';
+    protected $fillable = ['reg_Denominacion'];
 }

@@ -7,6 +7,7 @@ use App\Models\TblCentro;
 use App\Models\TblFichaCaracterizacion;
 use App\Models\TblInstructor;
 use App\Models\TblPrograma;
+use App\Models\TblRegionales;
 use App\Models\TblVigencia;
 use Illuminate\Http\Request;
 use App\Models\User;
@@ -37,15 +38,18 @@ class HomeController extends Controller
         $fichas = TblFichaCaracterizacion::count();
         $vigencias = TblVigencia::count();
         $instructores = TblInstructor::count();
-        return view('home', 
-                    compact('usersCount', 
-                            'conteoProgramas', 
+        $regionales = TblRegionales::count();
+        return view('home',
+                    compact('usersCount',
+                            'conteoProgramas',
                             'centros',
                             'archivos',
                             'fichas',
                             'vigencias',
-                            'instructores'
+                            'instructores',
+                            'regionales'
                                         ));
+
 
         // return view('home');
     }
