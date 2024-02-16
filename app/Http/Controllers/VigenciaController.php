@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\TblRedes;
 use App\Models\TblVigencia;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class VigenciaController extends Controller
 {
@@ -12,7 +14,14 @@ class VigenciaController extends Controller
      */
     public function index()
     {
-        $vigencias = TblVigencia::get();
+       // $vigencias = TblVigencia::get();
+
+        $vigencias = DB::table('tbl_vigencias')
+            ->join('tbl_redes', 'tbl_vigencias.Codigo_red', '=', 'tbl_redes.Codigo')
+            ->select('tbl_redes.*', 'tbl_vigencias.*')
+            ->get();
+
+
         return view('vigencias.vigencias', ['vigencias' => $vigencias]);
 
     }
@@ -22,7 +31,10 @@ class VigenciaController extends Controller
      */
     public function create()
     {
-        return view('vigencias.crearVigencia');
+
+        $redes = TblRedes::get();
+       // dd($red);
+        return view('vigencias.crearVigencia' ,['redes' => $redes]);
     }
 
     /**
@@ -49,8 +61,9 @@ class VigenciaController extends Controller
     public function edit(string $id)
     {
         $vigencia = TblVigencia::find($id);
+        $redes = TblRedes::get();
 
-        return view('vigencias.editarVigencia', ['vigencia' => $vigencia]);
+        return view('vigencias.editarVigencia', compact('vigencia','redes'));
     }
 
     /**
@@ -59,6 +72,7 @@ class VigenciaController extends Controller
     public function update(Request $request, string $id)
     {
         $vigencia = TblVigencia::find($id);
+
         $vigencia->update($request->all());
 
         return redirect()->route('vigencias.index');
