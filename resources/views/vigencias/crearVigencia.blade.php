@@ -12,17 +12,17 @@
     <div class=" col-12">
         <div>
             <h2>Crear Vigencia</h2>
-        </div>        
+        </div>
     </div>
-    
+
     <div class="card-body">
         <form action="{{route('vigencias.store')}}" method="POST" >
-            @csrf            
+            @csrf
                 <div class="row g-3">
                     <div class="col-md-6">
                         <label class="form-label" >Contrato:</label>
                         <input type="number" name="vig_Contrato" class="form-control" placeholder="Contrato" required >
-                    </div>                    
+                    </div>
                     <div class="col-md-6">
                         <label class="form-label" >Año:</label>
                         <input type="number" name="vig_anio" class="form-control" placeholder="Año" required >
@@ -31,30 +31,33 @@
                         <label class="form-label" >Inicio:</label>
                         <input type="date" name="vig_Inicio" class="form-control" placeholder="Inicio" required >
                     </div>
-                    
+
 
                     <div class="col-md-6">
                         <label>Fin:</label>
                         <input type="date" name="vig_Fin" class="form-control" placeholder="Fin" required >
-                    </div>  
+                    </div>
 
                     <div class="col-md-6">
                         <label>Objeto:</label>
                         {{-- <input type="text" name="vig_Objetos" class="form-control" placeholder="Objeto" required > --}}
                         <textarea name="vig_Objetos" class="form-control" placeholder="Objeto"></textarea>
-                    </div>                                                                                         
-                                      
+                    </div>
+
                     <div class="col-md-6">
-                        <label>Red:</label>
-                        <input type="text" name="" class="form-control" placeholder="Red" disabled>
-                    </div>                                  
-                                      
-                </div>               
-                
+                        <label class="form-label" >Red de Conocimiento:</label>
+                        <select class="form-control" name="Codigo_red">
+                            @foreach ($redes as $re)
+                                <option value="{{ $re -> Codigo }}"> ({{ $re -> Codigo }}) {{ $re -> red_Denominacion }}  </option>
+                        </select>
+                        @endforeach
+                </div>
+
                 <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-2">
                     <button type="submit" class="btn btn-secondary">Crear</button>
-                </div>            
+                </div>
         </form>
+
     </div>
 </div>
 @stop

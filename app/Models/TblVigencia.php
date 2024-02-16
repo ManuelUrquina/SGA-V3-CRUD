@@ -14,8 +14,15 @@ class TblVigencia extends Model
     protected $fillable = ['vig_Contrato', 'vig_anio', 'vig_Inicio', 'vig_Fin', 'vig_Objetos', 'Codigo_red'];
 
     //relacion 1 a N
-    public function instructores() {
+    public function instructores()
+    {
         return $this->hasMany(TblInstructor::class, "Codigo_vigencia");
     }
 
+    public function redes()
+    {
+
+        return $this->hasMany(TblRedes::class, "Codigo_Red");
+
+    }
 }
