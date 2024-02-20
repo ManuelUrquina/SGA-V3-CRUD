@@ -4,6 +4,7 @@ use App\Http\Controllers\AmbienteController;
 use App\Http\Controllers\ArchivoController;
 use App\Http\Controllers\CentroController;
 use App\Http\Controllers\CompetenciaController;
+use App\Http\Controllers\RedesController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ProgramaController;
@@ -37,6 +38,9 @@ Route::get('regionales', function () {
     return view('Regionales.regionales');
 });
 
+
+//rutas de redes de conocimiento
+Route::resource('redes', RedesController::class);
 
 //rutas Programas
 Route::resource('programas', ProgramaController::class);

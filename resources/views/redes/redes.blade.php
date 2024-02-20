@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Redes')
+@section('title', 'Redes de Conocimiento')
 
 @section('content_header')
     <h1>Redes de Conocimiento</h1>
@@ -22,15 +22,14 @@
                 <tr>
                     <th>#</th>
                     <th>Nombre</th>
-                    <th>Apellido</th>
 
                 </tr>
                 </thead>
                 <tbody>
                 @foreach ($redes as $red)
                     <tr>
-                        <td>{{ $instructor->Codigo }}</td>
-                        <td>{{ $instructor->red_Denominacion }}</td>>
+                        <td>{{ $red ->Codigo }}</td>
+                        <td>{{ $red ->red_Denominacion }}</td>>
                         <td>
                             {{-- @foreach ($instructor->eventos as $evento)
                                 {{ $evento->title }}-
@@ -38,7 +37,7 @@
 
                         </td>
                         <td class="d-flex">
-                            <a href="{{ route('redes.edit', $instructor->Codigo) }}"
+                            <a href="{{ route('redes.edit', $red->Codigo) }}"
                                class="btn btn-primary btn-sm mr-2"
                                onclick=""
                                style="width: 30px; height: 30px; border-radius: 50%"
@@ -46,7 +45,7 @@
                                 <i class="fas fa-pen"></i>
                             </a>
 
-                            <form action="{{ route('redes.destroy', $instructor->Codigo) }}" method="POST" class="d-inline" >
+                            <form action="{{ route('redes.destroy', $red->Codigo) }}" method="POST" class="d-inline" >
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit"

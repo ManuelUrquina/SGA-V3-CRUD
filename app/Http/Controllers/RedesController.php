@@ -13,7 +13,7 @@ class RedesController extends Controller
     public function index()
     {
         $redes = TblRedes::get();
-        return view('redes', ['redes' => $redes]);
+        return view('redes.redes', ['redes' => $redes]);
         //
     }
 
