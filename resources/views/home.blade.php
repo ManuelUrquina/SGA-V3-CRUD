@@ -44,7 +44,7 @@
             <x-adminlte-small-box title="{{ $fichas }}" text="Fichas" icon="fas fa-tags text-dark" theme="success" url="/fichas" url-text="Ver fichas" />
         </div>
         <div class="col-md-3 ">
-            <x-adminlte-small-box title="{{ $vigencias }}" text="viegencia" icon="fas fa-folder text-dark" theme="success" url="/vigencias" url-text="Ver vigencia" />
+            <x-adminlte-small-box title="{{ $vigencias }}" text="Vigencias" icon="fas fa-folder text-dark" theme="success" url="/vigencias" url-text="Ver vigencia" />
         </div>
         <div class="col-md-3 ">
             <x-adminlte-small-box title="{{ $instructores }}" text="Instructores" icon="fas fa-id-badge text-dark" theme="success" url="/instructores" url-text="Ver instructores"/>
@@ -53,15 +53,6 @@
             <x-adminlte-small-box title="{{ $regionales }}" text="Regionales" icon="fas fa-map text-dark" theme="success" url="/regionales" url-text="Ver regionales"/>
         </div>
 
-        <div class="col-md-3 ">
-            <x-adminlte-small-box title="{{ $fichas }}" text="Fichas" icon="fas fa-tags text-dark" theme="success" url="#" url-text="Ver fichas" />
-        </div>
-        <div class="col-md-3 ">
-            <x-adminlte-small-box title="{{ $vigencias }}" text="Vigencia" icon="fas fa-folder text-dark" theme="success" url="#" url-text="Ver vigencia" />
-        </div>
-        <div class="col-md-3 ">
-            <x-adminlte-small-box title="{{ $instructores }}" text="Instructores" icon="fas fa-id-badge text-dark" theme="success" url="#" url-text="Ver instructores"/>
-        </div>
 
 
     </div>

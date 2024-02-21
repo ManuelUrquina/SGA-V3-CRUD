@@ -35,13 +35,14 @@
             </thead>
             <tbody>
                 @foreach ($fichas as $ficha)
+                    @foreach ($modalidades as $modalidad)
                     <tr>
                         <td>{{ $ficha->Codigo }}</td>
                         <td>{{ $ficha->fich_Inicio }}</td>
                         <td>{{ $ficha->fich_Fin }}</td>
                         <td>{{ $ficha->fich_Etapa }} </td>
                         <td>{{ $ficha->Codigo_programa }}</td>
-                        <td>{{ $ficha->Codigo_modalidad }}</td>
+                        <td>{{ $modalidad->mod_Denominacion }}</td>
                         <td>{{ $ficha->Codigo_centro }}</td>
                         <td>
                             <div class=" d-flex ">
@@ -84,6 +85,7 @@
                             </form>
                         </td>
                     </tr>
+                    @endforeach
                 @endforeach
             </tbody>
 

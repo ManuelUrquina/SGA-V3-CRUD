@@ -8,6 +8,7 @@ use App\Models\TblModalidad;
 use App\Models\TblPrograma;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
+use Illuminate\Support\Facades\DB;
 
 class FichaController extends Controller
 {
@@ -17,6 +18,10 @@ class FichaController extends Controller
 
     public function index(){
         $fichas = TblFichaCaracterizacion::get();
+        $modalidades = DB::table('tbl_ficha_caracterizacions')
+            ->join('tbl_modalidads', 'tbl_ficha_caracterizacions.Codigo_modalidad', '=', 'tbl_modalidads.id')
+            ->select('tbl_ficha_caracterizacions.*', 'tbl_modalidads.*')
+            ->get();
         $hoy = Carbon::now();
         $fichas->each(function($ficha) use ($hoy){
             $fechainicial = Carbon::parse($ficha->fich_Inicio);
@@ -32,7 +37,7 @@ class FichaController extends Controller
             $ficha->diasTotal = $diasTotal;
         } );
 
-        return view('fichas.fichas', ['fichas'=>$fichas]);
+        return view('fichas.fichas', compact('fichas','modalidades'));
     }
 
     /**
