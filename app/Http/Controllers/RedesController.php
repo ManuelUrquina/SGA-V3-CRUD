@@ -13,7 +13,7 @@ class RedesController extends Controller
     public function index()
     {
         $redes = TblRedes::get();
-        return view('redes', ['redes' => $redes]);
+        return view('redes.redes', ['redes' => $redes]);
         //
     }
 
@@ -48,7 +48,9 @@ class RedesController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $redes = TblRedes::find($id);
+
+        return view('redes.editarRedes', ['redes' => $redes]);
     }
 
     /**
@@ -56,7 +58,11 @@ class RedesController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $redes = TblRedes::find($id);
+        $redes->update($request->all());
+
+        return redirect()->route('redes.index');
+
     }
 
     /**
@@ -64,6 +70,9 @@ class RedesController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $redes = TblRedes::find($id);
+        $redes->delete();
+
+        return redirect()->route('redes.index');
     }
 }
