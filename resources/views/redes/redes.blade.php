@@ -17,25 +17,20 @@
     <div class="card">
         <!-- DataTables -->
         <div class="card-body table-responsive p-2">
-            <table id="datatables_instructores" class="display shadow-sm text-capitalize " >
+            <table id="datatables_redes" class="display shadow-sm text-capitalize " >
                 <thead>
                 <tr>
                     <th>#</th>
                     <th>Nombre</th>
-
+                    <th>Acciones</th>
                 </tr>
                 </thead>
                 <tbody>
                 @foreach ($redes as $red)
                     <tr>
                         <td>{{ $red ->Codigo }}</td>
-                        <td>{{ $red ->red_Denominacion }}</td>>
-                        <td>
-                            {{-- @foreach ($instructor->eventos as $evento)
-                                {{ $evento->title }}-
-                            @endforeach --}}
+                        <td>{{ $red ->red_Denominacion }}</td>
 
-                        </td>
                         <td class="d-flex">
                             <a href="{{ route('redes.edit', $red->Codigo) }}"
                                class="btn btn-primary btn-sm mr-2"
@@ -75,24 +70,16 @@
 
         @section('css')
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+
             {{-- datatables --}}
             <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css" />
-
-            <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/2.1.0/css/buttons.dataTables.min.css">
-            <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
         @stop
 
         @section('js')
             {{-- jQuery --}}
             <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-
             <!-- DataTables JS-->
             <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-
-            <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.1.0/js/dataTables.buttons.min.js"></script>
-            <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.1.0/js/buttons.html5.min.js"></script>
-            <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/buttons/2.1.0/js/buttons.print.min.js"></script>
-
 
             <!-- SweetAlert2 -->
             <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
@@ -101,14 +88,12 @@
 
             <script>
                 const dataTableOpciones = {
-                    dom: 'Bfrtip',
-                    buttons: [
-                        'excel', 'csvHtml5', 'pdf',
-                    ],
+                    "order": [[ 0, 'asc' ]],
                 }
 
                 $(document).ready(function () {
-                    $('#datatables_instructores').DataTable(dataTableOpciones);
+                    $('#datatables_redes').DataTable();
                 });
             </script>
 @stop
+
