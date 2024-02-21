@@ -306,16 +306,16 @@ return [
             'type' => 'sidebar-menu-search',
             'text' => 'search',
         ],
-         //       
+         //
          [
             'text'        => 'Inicio',
             'url'         => 'home',
-            'icon'        => 'fas fa-circle',            
+            'icon'        => 'fas fa-circle',
         ],
         [
             'text' => 'Archivos',
             'url'  => '/guardar-archivo-index',
-            'icon' => 'fas fa-file-alt', 
+            'icon' => 'fas fa-file-alt',
         ],
         [
             'text' => 'Ambientes',
@@ -340,12 +340,12 @@ return [
         [
             'text' => 'Programas',
             'url'  => 'programas',
-            'icon' => 'fas fa-graduation-cap',            
+            'icon' => 'fas fa-graduation-cap',
         ],
         [
             'text' => 'Competencias',
             'url'  => 'competencias',
-            'icon' => 'fas fa-paper-plane',            
+            'icon' => 'fas fa-paper-plane',
         ],
         [
             'text' => 'Fichas',
@@ -372,7 +372,15 @@ return [
             'url'  => 'evento',
             'icon' => 'fas fa-calendar-alt',
         ],
-        
+        [
+
+            'text' => 'Redes de Conocimiento',
+            'url' => 'redes',
+            'icon' => 'fas fa-fw fa-laptop-house',
+
+
+        ],
+
     ],
 
     /*
