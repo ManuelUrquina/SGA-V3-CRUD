@@ -21,7 +21,7 @@ class Evento extends Model
         // 'horaFinal' => 'required'
     ];
 
-    protected $fillable = ['title','descripcion','color', 'start','end','horaInicio','horaFinal','Codigo_ficha', 
+    protected $fillable = ['title','descripcion','color', 'start','end','horaInicio','horaFinal','Codigo_ficha',
                             'Codigo_resultado_aprendizaje','Codigo_instructor', 'Codigo_ambiente','Codigo_competencia'];
 
     public function resultadoAprendizaje():BelongsTo
@@ -47,5 +47,5 @@ class Evento extends Model
     {
         return $this->belongsTo(TblCompetencia::class, 'Codigo_competencia');
     }
-    
+
 }

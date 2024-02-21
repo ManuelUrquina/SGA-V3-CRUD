@@ -5,13 +5,13 @@ document.addEventListener('DOMContentLoaded', function() {
     let formulario = document.querySelector("#formularioEventos");
     var calendarEl = document.getElementById('calendar');
     // console.log(formulario);
-    
+
     var calendar = new FullCalendar.Calendar(calendarEl, {
       // timeZone: 'UTC',
       initialView: 'dayGridMonth',
       locale:'es',
       displayEventTime: false,
-      selectable: true,      
+      selectable: true,
       headerToolbar: {
         left: 'prev,next today',
         center: 'title',
@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', function() {
       },
       // events: baseURL+"/evento/mostrar",
       dayMaxEvents: true,//cuando hay demasiados eventos en un día, muestra el popover
-      // hiddenDays: [ 0 ], //domingo desabilitado      
+      // hiddenDays: [ 0 ], //domingo desabilitado
       // editable: true,
       eventResizableFromStart: true,
 
@@ -33,35 +33,35 @@ document.addEventListener('DOMContentLoaded', function() {
             googleCalendarId: 'es-419.co#holiday@group.v.calendar.google.com',
             color: 'black',
             className: 'feriado',
-            
+
         }
       ],
-        
+
       //Tooltip de los eventos
-      eventDidMount: function(info) { 
-        fechaUTC = moment.utc(info.event.start);       
+      eventDidMount: function(info) {
+        fechaUTC = moment.utc(info.event.start);
         fechafinalUTC = moment.utc(info.event.end);
-        var content = '<strong>' + info.event.title + '</strong><br>' 
+        var content = '<strong>' + info.event.title + '</strong><br>'
                       // 'Descripción: ' + info.event.extendedProps.descripcion + '<br>'
                       + moment(fechaUTC).format('DD/MM/YYYY') + " - "
                       + moment(fechafinalUTC).format('DD/MM/YYYY') + '<br>';
-        
+
         // console.log(content)
         tippy(info.el, {
           content: content,
-          allowHTML: true,         
-          interactive: true,                    
+          allowHTML: true,
+          interactive: true,
         });
         // console.log('event:', info.event._def)
 
         //pasando lista de feriados
-        fechaUTC = moment.utc(info.event.start);        
-        if (info.event._def && info.event._def.publicId && info.event._def.url ) {          
-          var listaFeriados = document.getElementById('listaFeriados'); // Selecciona el elemento <ul>          
+        fechaUTC = moment.utc(info.event.start);
+        if (info.event._def && info.event._def.publicId && info.event._def.url ) {
+          var listaFeriados = document.getElementById('listaFeriados'); // Selecciona el elemento <ul>
           var li = document.createElement('li');
           li.innerHTML = '<strong>'+info.event.title+'</strong>' + '<br>' + '<small>' +moment(fechaUTC).format(' D [de] MMMM ')+'</small>';
-          li.classList.add('list-group-item','list-group-item-action','list-group-item-warning','mb-1', 'text-truncate');//clases 
-          listaFeriados.appendChild(li);           
+          li.classList.add('list-group-item','list-group-item-action','list-group-item-warning','mb-1', 'text-truncate');//clases
+          listaFeriados.appendChild(li);
         }
     },
 
@@ -71,27 +71,27 @@ document.addEventListener('DOMContentLoaded', function() {
       while (listaFeriados.firstChild) {
           listaFeriados.removeChild(listaFeriados.firstChild);
       }
-    },  
-    
-    dateClick:function(info){  
+    },
+
+    dateClick:function(info){
       formulario.reset();
       // console.log("fecha:", info.dateStr);
       var fechaIni = info.dateStr;
       var fechaStar = fechaIni + "T06:00";
       var fechaEnd = fechaIni + "T06:00";
-        //asignamos la fecha actual en en formulario        
-        // formulario.start.value = info.dateStr;    
+        //asignamos la fecha actual en en formulario
+        // formulario.start.value = info.dateStr;
         // formulario.end.value = info.dateStr;
         formulario.start.value = fechaStar;
         formulario.end.value = fechaEnd;
-        
+
         //deshabilitar el botón Modificar mientras el dia no tenga un evento asignado
         if (userRole == 'admin'){
           document.getElementById('btnModificar').hidden = true;
           document.getElementById('btnEliminar').hidden = true;
         }
 
-        $('#evento').modal('show');          
+        $('#evento').modal('show');
       },
 
       eventClick: function (info) {
@@ -122,9 +122,9 @@ document.addEventListener('DOMContentLoaded', function() {
             }
             //  //si el rol no es admin se Oculta los campos del form
             // if (userRole !== 'admin' || !info.event ) {
-            //   // document.getElementById("ocultar").style.display = "none";  
-            //   console.log('ocultando') 
-            //   $("#ocultar").hide();                     
+            //   // document.getElementById("ocultar").style.display = "none";
+            //   console.log('ocultando')
+            //   $("#ocultar").hide();
             // } else {
             //   console.log('mostrando');
             //   $("#ocultar").show();
@@ -136,7 +136,7 @@ document.addEventListener('DOMContentLoaded', function() {
             var fechaIni = moment.utc(respuesta.data.start);
             var fechaFnl = moment.utc(respuesta.data.end).add(1, 'd');
             var diasTotal = parseInt(moment.duration(fechaFnl.diff(fechaIni)).asDays(), 10);
-            var total= sumHor * diasTotal;            
+            var total= sumHor * diasTotal;
 
             //porcentaje de dias faltantes
             var fechaActual = moment.utc();
@@ -144,29 +144,29 @@ document.addEventListener('DOMContentLoaded', function() {
             var diasRestantes = fechaActual.diff(fechaIni, 'days');// dias vistos
             var porcentaje = (diasRestantes / diasTotal) * 100;
             porcentaje = Math.min(Math.max(porcentaje, 0), 100);//porcentaje limitado entre 0 y 100
-            porcentaje = porcentaje.toFixed(1);            
-            
+            porcentaje = porcentaje.toFixed(1);
+
             // console.log( sumHor,'h ',diasTotal,'d ', 'total',total );
             // console.log(diasRestantes, 'dias vistos', porcentaje,'%');
-          
+
             $('#progress-bar').css('width', porcentaje + '%');
             $('#progress-label').text(porcentaje + '%');
             $('#eventoHoraDiff').html(total + 'h'+ ' en ' + diasTotal + ' días');
             $('#eventoInstructor').html(respuesta.data.instructor.inst_Nombres);//nombre instructor
-            $('#eventoInstructorApellido').html(respuesta.data.instructor.inst_Apellido);//apellido 
-            $('#eventoFicha').html(respuesta.data.ficha_caracterizacion.fich_Codigo + '-'+ respuesta.data.ficha_caracterizacion.programa.prog_Denominacion);
+            $('#eventoInstructorApellido').html(respuesta.data.instructor.inst_Apellido);//apellido
+            $('#eventoFicha').html(respuesta.data.ficha_caracterizacion.Codigo + '-'+ respuesta.data.ficha_caracterizacion.programa.prog_Denominacion);
             $('#eventoCentro').html(respuesta.data.ficha_caracterizacion.centro.cent_Denominacion);
             $('#eventoCompetencia').html(respuesta.data.competencia.comp_Denominacion);
-            $('#eventoAmbiente').html(respuesta.data.ambiente.amb_Denominacion);
+            $('#eventoAmbiente').html(respuesta.data.ambientes.amb_Denominacion);
 
-            //mostar el nodal             
+            //mostar el nodal
             $("#evento").modal("show");
-          }).catch(error=>{ if(error.response){console.log(error.response.data);}}) 
+          }).catch(error=>{ if(error.response){console.log(error.response.data);}})
 
           // funcionalidad para ver datos para instructor y estudiante
-          var eventoSeleccionado = info.event;          
+          var eventoSeleccionado = info.event;
           fechaUTC = moment.utc(eventoSeleccionado._instance.range.start);
-          fechaFinalUTC = moment.utc(eventoSeleccionado._instance.range.end);         
+          fechaFinalUTC = moment.utc(eventoSeleccionado._instance.range.end);
               // console.log(eventoSeleccionado);
               $('#eventoTitle').html(eventoSeleccionado._def.title);
               $('#eventoDescripcion').html(eventoSeleccionado.extendedProps.descripcion);
@@ -174,11 +174,11 @@ document.addEventListener('DOMContentLoaded', function() {
               $('#eventoFechaFinal').html(moment(fechaFinalUTC).format('DD/MM/YYYY'));
               $('#eventoHoraInicio').html(eventoSeleccionado.extendedProps.horaInicio);
               $('#eventoHoraFinal').html(eventoSeleccionado.extendedProps.horaFinal);
- 
+
               // Abrir el modal
-              $('#evento').modal('show');             
-      },      
-    
+              $('#evento').modal('show');
+      },
+
     });
     calendar.render();
 
@@ -205,15 +205,15 @@ document.addEventListener('DOMContentLoaded', function() {
       // document.querySelector("#progress-label").textContent = "";
     });
 
-    document.getElementById("btnGuardar").addEventListener("click", function(){      
+    document.getElementById("btnGuardar").addEventListener("click", function(){
       var color = formulario.color.value;// Obtenemos el color seleccionado por el usuario
       // Agregamos el nuevo evento con el color seleccionado
       calendar.addEvent({
         color: color // Asignamos el color al evento
       });
-      
-      if (formulario.title.value === '' || formulario.color.value === '' || formulario.descripcion.value === '' || 
-          formulario.start.value === '' || formulario.end.value === '' || formulario.Codigo_ficha.value === '' || 
+
+      if (formulario.title.value === '' || formulario.color.value === '' || formulario.descripcion.value === '' ||
+          formulario.start.value === '' || formulario.end.value === '' || formulario.Codigo_ficha.value === '' ||
           formulario.Codigo_competencia.value === '' || formulario.Codigo_instructor.value === '' || formulario.Codigo_ambiente.value === '' ){
         Swal.fire({
           title: 'Aviso',
@@ -227,8 +227,8 @@ document.addEventListener('DOMContentLoaded', function() {
           title: 'Guardado',
           text: 'El evento ha sido guardado exitosamente.'
         });
-      }   
-      
+      }
+
     });
 
     document.getElementById("btnEliminar").addEventListener("click", function(){
@@ -237,13 +237,13 @@ document.addEventListener('DOMContentLoaded', function() {
       title: '¿Estás seguro de eliminar?',
       text: 'Una vez eliminado, no se podrá recuperar',
       icon: 'warning', buttons: true, dangerMode: true}).
-      then((eliminar) => { 
+      then((eliminar) => {
         if (eliminar){
           enviarDatos("/evento/borrar/" + formulario.id.value);
         }else {
           swal('Elemento no eliminado');
-        }});          
-          
+        }});
+
     });
 
     document.getElementById("btnModificar").addEventListener("click", function(){
@@ -255,18 +255,18 @@ document.addEventListener('DOMContentLoaded', function() {
         title: 'Modificado',
         text: 'El evento ha sido modificado exitosamente.'
       });
-          
+
     });
 
     function enviarDatos(url){
       const datos = new FormData(formulario);
       const nuevaURL = baseURL + url;
-      
+
       axios.post(nuevaURL, datos).
       then(
         (respuesta)=>{
-          calendar.refetchEvents(); 
-          
+          calendar.refetchEvents();
+
           //oculta el modal
           $("#evento").modal("hide");
         }
@@ -276,4 +276,4 @@ document.addEventListener('DOMContentLoaded', function() {
         )
     }
 
-  });      
+  });

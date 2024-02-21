@@ -140,72 +140,72 @@
                                         <i class="fas fa-pen"></i>
                                     </a>
 
-                                    <form action="{{ route('resultadoAprendizaje.destroy', $rap) }}" method="POST"
-                                        class="d-inline">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger btn-sm"
-                                            onclick="
-                                                event.preventDefault();
-                                                swal({title: '¿Estás seguro de eliminar?',
-                                                text: 'Una vez eliminado, no se podrá recuperar',
-                                                icon: 'warning', buttons: true, dangerMode: true}).
-                                                then((eliminar) => { if (eliminar){form.submit();}
-                                                else {swal('Elemento no eliminado');}});
-                                                "
-                                            style="width: 30px; height: 30px; border-radius: 50%">
-                                            <i class="fas fa-trash-alt"></i>
-                                        </button>
-                                    </form>
-                                </td>
-                            </tr>
-                        @endforeach
-                    </tbody>
+                                    {{--  <form action="{{ route('resultadoAprendizaje.destroy', $rap->Codigo) }}" method="POST"
+                                          class="d-inline">
+                                          @csrf
+                                          @method('DELETE')
+                                          <button type="submit" class="btn btn-danger btn-sm"
+                                              onclick="
+                                                  event.preventDefault();
+                                                  swal({title: '¿Estás seguro de eliminar?',
+                                                  text: 'Una vez eliminado, no se podrá recuperar',
+                                                  icon: 'warning', buttons: true, dangerMode: true}).
+                                                  then((eliminar) => { if (eliminar){form.submit();}
+                                                  else {swal('Elemento no eliminado');}});
+                                                  "
+                                              style="width: 30px; height: 30px; border-radius: 50%">
+                                              <i class="fas fa-trash-alt"></i>
+                                          </button>
+                                      </form> --}}
+                                  </td>
+                              </tr>
+                          @endforeach
+                      </tbody>
 
-                </table>
-            </div>
+                  </table>
+              </div>
 
-        </div>
+          </div>
 
 
 
-        <!-- Modal -->
-        @foreach ($competencias as $competencia)
-            <div class="modal fade" id="modalId-{{ $competencia->Codigo }}" tabindex="-1" role="dialog"
-                aria-labelledby="modalTitleId" aria-hidden="true">
-                <div class="modal-dialog modal-xl" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title text-capitalize" id="modalTitleId"><b class="fw-bold">{{ $competencia->comp_Denominacion }}</b></h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body text-capitalize">
-                                @foreach ($competencia->resultadoAprendizajes as $ra)
-                                <div class="table-responsive">
-                                    {{-- <table class="table ">
-                                        <thead class="">
-                                            <tr>
-                                                <th scope="col" style="width: 6rem;"> CÓDIGO </th>
-                                                <th scope="col">RESULTADOS DE APRENDIZAJE</th>
-                                                <th scope="col">CRITERIOS DE EVALUACIÓN</th>
-                                                <th scope="col">CONCEPTOS Y PRINCIPIOS</th>
-                                                <th scope="col">PROCESOS</th>
-                                                <th scope="col">PERFIL TÉCNICO DEL INSTRUCTOR</th>
-                                                <th scope="col">MATERIAL REQUERIDO</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody class="table-group-divider">
-                                            <tr >
-                                                <td class="text-start ">{{$competencia->comp_codigoCompetencia.'-'.$ra->Codigo}}</td>
-                                                <td class="text-break"  >{{ $ra->resul_Denominacion }}</td>
-                                                <td class="text-break">{{ $rap->criteriosEvaluacion()->first()['cri_Denominacion'] }}</td>
-                                                <td class="text-break">{{ $rap->conceptoPrincipios()->first()['con_Denominacion'] }}</td>
-                                                <td class="text-break">{{ $rap->procesos()->first()['pro_Denominacion'] }}</td>
-                                                <td class="text-break">{{ $rap->perfiltecnicoInstructor()->first()['per_RequisitosAcademicos'] }}</td>
-                                                <td class="text-break">{{ $rap->materialRequerido()->first()['mat_Denominacion'] }}</td>
-                                            </tr>
-                                        </tbody>
-                                    </table> --}}
+          <!-- Modal -->
+          @foreach ($competencias as $competencia)
+              <div class="modal fade" id="modalId-{{ $competencia->Codigo }}" tabindex="-1" role="dialog"
+                  aria-labelledby="modalTitleId" aria-hidden="true">
+                  <div class="modal-dialog modal-xl" role="document">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                              <h5 class="modal-title text-capitalize" id="modalTitleId"><b class="fw-bold">{{ $competencia->comp_Denominacion }}</b></h5>
+                              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                          </div>
+                          <div class="modal-body text-capitalize">
+                                  @foreach ($competencia->resultadoAprendizajes as $ra)
+                                  <div class="table-responsive">
+                                      {{-- <table class="table ">
+                                          <thead class="">
+                                              <tr>
+                                                  <th scope="col" style="width: 6rem;"> CÓDIGO </th>
+                                                  <th scope="col">RESULTADOS DE APRENDIZAJE</th>
+                                                  <th scope="col">CRITERIOS DE EVALUACIÓN</th>
+                                                  <th scope="col">CONCEPTOS Y PRINCIPIOS</th>
+                                                  <th scope="col">PROCESOS</th>
+                                                  <th scope="col">PERFIL TÉCNICO DEL INSTRUCTOR</th>
+                                                  <th scope="col">MATERIAL REQUERIDO</th>
+                                              </tr>
+                                          </thead>
+                                          <tbody class="table-group-divider">
+                                              <tr >
+                                                  <td class="text-start ">{{$competencia->comp_codigoCompetencia.'-'.$ra->Codigo}}</td>
+                                                  <td class="text-break"  >{{ $ra->resul_Denominacion }}</td>
+                                                  <td class="text-break">{{ $rap->criteriosEvaluacion()->first()['cri_Denominacion'] }}</td>
+                                                  <td class="text-break">{{ $rap->conceptoPrincipios()->first()['con_Denominacion'] }}</td>
+                                                  <td class="text-break">{{ $rap->procesos()->first()['pro_Denominacion'] }}</td>
+                                                  <td class="text-break">{{ $rap->perfiltecnicoInstructor()->first()['per_RequisitosAcademicos'] }}</td>
+                                                  <td class="text-break">{{ $rap->materialRequerido()->first()['mat_Denominacion'] }}</td>
+                                              </tr>
+                                          </tbody>
+                                      </table> --}}
 
                                     <table class="table table-bordered">
                                         <thead>

@@ -52,61 +52,61 @@
                     </div>
                     <hr>
                     <p class="text-decoration-underline fw-bolder fs-5">Criterios de evaluación</p>
-                    <div class="col-md-12">
-                        <label for="cri_Denominacion" class="form-label">Criterios:</label>
-                        <textarea class="form-control" name="cri_Denominacion" rows="2" >{{ $criterios->criteriosEvaluacion()->first()['cri_Denominacion'] }}</textarea>
-                    </div>
-                    <hr>
-                    <p class="text-decoration-underline fw-bolder fs-5">Conceptos y Principios</p>
-                    <div class="col-md-12">
-                        <label for="con_Denominacion" class="form-label">Conceptos y Principios:</label>
-                        <textarea class="form-control" name="con_Denominacion" rows="2">{{ $resultado->conceptoPrincipios()->first()['con_Denominacion'] }}</textarea>
-                    </div>
-                    <hr>
-                    <p class="text-decoration-underline fw-bolder fs-5">Procesos</p>
-                    <div class="">
-                        <label class="form-label">Procesos:</label>
-                        <textarea class="form-control" name="pro_Denominacion" rows="2">{{ $resultado->procesos()->first()['pro_Denominacion'] }}</textarea>
-                    </div>
-                    <hr>
-                    <p class="text-decoration-underline fw-bolder fs-5">Perfil Instructor</p>
-                    <div class="col-md-6">
-                        <label class="form-label">Requisitos académicos:</label>
-                        <textarea class="form-control" name="per_RequisitosAcademicos" rows="2">{{ $resultado->perfiltecnicoInstructor()->first()['per_RequisitosAcademicos'] }}</textarea>
-                    </div>
-                    <div class="col-md-6">
-                        <label class="form-label">Experiencia:</label>
-                        <textarea class="form-control" name="per_Experiencia" rows="2">{{ $resultado->perfiltecnicoInstructor()->first()['per_Experiencia'] }}</textarea>
-                    </div>
-                    <div class="col-md-6">
-                        <label class="form-label">Competecnias Mínimas:</label>
-                        <textarea class="form-control" name="per_CompetenciasMinimas" rows="2">{{ $resultado->perfiltecnicoInstructor()->first()['per_CompetenciasMinimas'] }}</textarea>
-                    </div>
-                    <div class="col-md-6">
-                        <label class="form-label">Observaciones:</label>
-                        <textarea class="form-control" name="per_Observacion" rows="2">{{ $resultado->perfiltecnicoInstructor()->first()['per_Observacion'] }}</textarea>
-                    </div>
+                     <div class="col-md-12">
+                          <label for="cri_Denominacion" class="form-label">Criterios:</label>
+                          <textarea class="form-control" name="cri_Denominacion" rows="2" >{{ $resultado->criteriosEvaluacion()->first()['cri_Denominacion'] }}</textarea>
+                      </div>
+                      <hr>
+                      <p class="text-decoration-underline fw-bolder fs-5">Conceptos y Principios</p>
+                      <div class="col-md-12">
+                          <label for="con_Denominacion" class="form-label">Denominacion:</label>
+                          <textarea class="form-control" name="con_Denominacion" rows="2">{{ $resultado->conceptoPrincipios()->first()['con_Denominacion'] }}</textarea>
+                      </div>
+                      <hr>
+                      <p class="text-decoration-underline fw-bolder fs-5">Procesos</p>
+                      <div class="">
+                          <label class="form-label">Procesos:</label>
+                          <textarea class="form-control" name="pro_Denominacion" rows="2">{{ $resultado->procesos()->first()['pro_Denominacion'] }}</textarea>
+                      </div>
+                      <hr>
+                      <p class="text-decoration-underline fw-bolder fs-5">Perfil Instructor</p>
+                      <div class="col-md-6">
+                          <label class="form-label">Requisitos académicos:</label>
+                          <textarea class="form-control" name="per_RequisitosAcademicos" rows="2">{{ $resultado->perfiltecnicoInstructor()->first()['per_RequisitosAcademicos'] }}</textarea>
+                      </div>
+                      <div class="col-md-6">
+                          <label class="form-label">Experiencia:</label>
+                          <textarea class="form-control" name="per_Experiencia" rows="2">{{ $resultado->perfiltecnicoInstructor()->first()['per_Experiencia'] }}</textarea>
+                      </div>
+                      <div class="col-md-6">
+                          <label class="form-label">Competecnias Mínimas:</label>
+                          <textarea class="form-control" name="per_CompetenciasMinimas" rows="2">{{ $resultado->perfiltecnicoInstructor()->first()['per_CompetenciasMinimas'] }}</textarea>
+                      </div>
+                      <div class="col-md-6">
+                          <label class="form-label">Observaciones:</label>
+                          <textarea class="form-control" name="per_Observacion" rows="2">{{ $resultado->perfiltecnicoInstructor()->first()['per_Observacion'] }}</textarea>
+                      </div>
 
-                    <hr>
-                    <p class="text-decoration-underline fw-bolder fs-5">Material Requerido</p>
-                    <div class="col-md-12">
-                        <label class="form-label">Material:</label>
-                        <textarea class="form-control" name="mat_Denominacion" rows="2">{{ $resultado->materialRequerido()->first()['mat_Denominacion'] }}</textarea>
-                    </div>
+                      <hr>
+                      <p class="text-decoration-underline fw-bolder fs-5">Material Requerido</p>
+                      <div class="col-md-12">
+                          <label class="form-label">Material:</label>
+                          <textarea class="form-control" name="mat_Denominacion" rows="2">{{ $resultado->materialRequerido()->first()['mat_Denominacion'] }}</textarea>
+                      </div>
 
-                    </div>
-                </div>
-                <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-2">
-                    <button type="submit" class="btn btn-secondary">Editar</button>
-                </div>
-        </form>
-    @endforeach
-    </div>
-</div>
-@stop
+                      </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-12 col-md-12 text-center mt-2">
+                      <button type="submit" class="btn btn-secondary">Editar</button>
+                  </div>
+          </form>
+      @endforeach
+      </div>
+  </div>
+  @stop
 
-@section('css')
-    {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
+  @section('css')
+      {{-- <link rel="stylesheet" href="/css/admin_custom.css"> --}}
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 @stop
 

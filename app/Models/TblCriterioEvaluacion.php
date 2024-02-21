@@ -18,4 +18,6 @@ class TblCriterioEvaluacion extends Model
     public function resultadoAprendisaje():BelongsTo{
         return $this->belongsTo(tblResultadoAprendizaje::class,'Codigo_ra');
     }
+
+
 }

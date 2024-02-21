@@ -68,7 +68,6 @@ class ResultadoAprendizajeController extends Controller
         $criterios= TblCriterioEvaluacion::all();
         $programas = TblPrograma::all();
         $competencias = TblCompetencia::all();
-       // dd($rap);
         return view('rap.editarRap', ['rap'=>$rap,'criterios'=>$criterios, 'competencias'=>$competencias, 'programas'=>$programas]);
     }
 
