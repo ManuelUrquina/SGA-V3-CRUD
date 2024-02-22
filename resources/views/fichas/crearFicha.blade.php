@@ -21,7 +21,11 @@
                 <div class="row g-3">
                     <div class="col-md-6">
                         <label class="form-label" >Código:</label>
+
                         <input type="number" name="Codigo" class="form-control" placeholder="Codigo" required >
+
+                        <input type="number" name="Codigo" class="form-control" placeholder="Nombre" required >
+
                     </div>
                     <div class="col-md-6">
                         <label class="form-label" >Inicio:</label>
