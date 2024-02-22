@@ -20,23 +20,26 @@
     <div class="card-body table-responsive p-2">
         <table id="datatables_instructores" class="display shadow-sm text-capitalize " >
             <thead>
-                <tr>
+            <tr>
 
-                    <th>Código</th>
-                    <th>Inicio</th>
-                    <th>Fin</th>
-                    <th>Etapa</th>
-                    <th>Programa</th>
-                    <th>modalidad de formación</th>
-                    <th>Centro</th>
-                    <th>tiempo de ejecución</th>
-                    <th>Acciones</th>
-                </tr>
+                <th>Código</th>
+                <th>Inicio</th>
+                <th>Fin</th>
+                <th>Etapa</th>
+                <th>Programa</th>
+                <th>modalidad de formación</th>
+                <th>Centro</th>
+                <th>tiempo de ejecución</th>
+                <th>Acciones</th>
+            </tr>
             </thead>
             <tbody>
             @foreach ($fichas as $ficha)
                 @php
                     $modalidadFicha = $modalidades->where('Codigo_modalidad', $ficha->Codigo_modalidad)->first();
+
+                    $centros = $centro->where('Codigo_centro', $ficha->Codigo_centro)->first();
+
                 @endphp
                 <tr>
                     <td>{{ $ficha->Codigo }}</td>
@@ -45,7 +48,11 @@
                     <td>{{ $ficha->fich_Etapa }}</td>
                     <td>{{ $ficha->Codigo_programa }}</td>
                     <td>{{ $modalidadFicha->mod_Denominacion }}</td>
+
+                    <td>{{ $centros->cent_Denominacion }}</td>
+
                     <td>{{ $ficha->Codigo_centro }}</td>
+
                     <td>
                         <div class="d-flex">
                             <progress class="my-auto" id="progreso" value="{{ $ficha->diasPorcentaje }}" max="100"></progress>

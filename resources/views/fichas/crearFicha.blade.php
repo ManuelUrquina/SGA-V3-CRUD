@@ -21,19 +21,27 @@
                 <div class="row g-3">
                     <div class="col-md-6">
                         <label class="form-label" >Código:</label>
+
+                        <input type="number" name="Codigo" class="form-control" placeholder="Codigo" required >
+
                         <input type="number" name="Codigo" class="form-control" placeholder="Nombre" required >
+
                     </div>
                     <div class="col-md-6">
                         <label class="form-label" >Inicio:</label>
-                        <input type="date" name="fich_Inicio" class="form-control" placeholder="Nombre" required >
+                        <input type="date" name="fich_Inicio" class="form-control" placeholder="Inicio" required >
                     </div>
                     <div class="col-md-6">
                         <label class="form-label" >Fin:</label>
-                        <input type="date" name="fich_Fin" class="form-control" placeholder="Apellido" required >
+                        <input type="date" name="fich_Fin" class="form-control" placeholder="Fin" required >
                     </div>
                     <div class="col-md-6">
                         <label class="form-label" >Etapa:</label>
-                        <input type="text" name="fich_Etapa" class="form-control" placeholder="Apellido" required >
+                        <select name="fich_Etapa" class="form-control" required>
+                            <option value="">Seleccione una etapa</option>
+                            <option value="lectiva">Lectiva</option>
+                            <option value="productiva">Productiva</option>
+                        </select>
                     </div>
 
                     <div class="col-md-6">

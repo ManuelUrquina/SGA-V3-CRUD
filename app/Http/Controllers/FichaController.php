@@ -22,6 +22,11 @@ class FichaController extends Controller
             ->join('tbl_modalidads', 'tbl_ficha_caracterizacions.Codigo_modalidad', '=', 'tbl_modalidads.id')
             ->select('tbl_ficha_caracterizacions.*', 'tbl_modalidads.*')
             ->get();
+        $centro = DB::table('tbl_ficha_caracterizacions')
+            ->join('tbl_centro_formacions', 'tbl_ficha_caracterizacions.Codigo_centro', '=', 'tbl_centro_formacions.Codigo')
+            ->select('tbl_ficha_caracterizacions.*', 'tbl_centro_formacions.*')
+            ->get();
+
         $hoy = Carbon::now();
         $fichas->each(function($ficha) use ($hoy){
             $fechainicial = Carbon::parse($ficha->fich_Inicio);
@@ -37,7 +42,7 @@ class FichaController extends Controller
             $ficha->diasTotal = $diasTotal;
         } );
 
-        return view('fichas.fichas', compact('fichas','modalidades'));
+        return view('fichas.fichas', compact('fichas','modalidades','centro'));
     }
 
     /**
