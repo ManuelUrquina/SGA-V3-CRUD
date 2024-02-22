@@ -34,59 +34,59 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($fichas as $ficha)
-                    @foreach ($modalidades as $modalidad)
-                    <tr>
-                        <td>{{ $ficha->Codigo }}</td>
-                        <td>{{ $ficha->fich_Inicio }}</td>
-                        <td>{{ $ficha->fich_Fin }}</td>
-                        <td>{{ $ficha->fich_Etapa }} </td>
-                        <td>{{ $ficha->Codigo_programa }}</td>
-                        <td>{{ $modalidad->mod_Denominacion }}</td>
-                        <td>{{ $ficha->Codigo_centro }}</td>
-                        <td>
-                            <div class=" d-flex ">
-                                <progress class="my-auto" id="progreso" value="{{ $ficha->diasPorcentaje }}" max="100"></progress>
-                                <label class="pl-2 my-auto" for="progreso">{{ $ficha->diasPorcentaje }}%</label>
-                            </div>
-
-                                @if ($ficha->diasRestantes === 0)
-                                    <small>Terminado</small>
-                                @else
-                                    <small>{{ $ficha->diasRestantes . " de" }} {{ $ficha->diasTotal . " Días" }}</small>
-                                @endif
-                        </td>
-                        <td class="d-flex">
-                            <a href="{{ route('fichas.edit', $ficha->Codigo) }}"
-                                class="btn btn-primary btn-sm mr-2"
-                                onclick=""
-                                style="width: 30px; height: 30px; border-radius: 50%"
-                            >
-                                <i class="fas fa-pen"></i>
-                            </a>
-                            {{--  --}}
-                            <form action="{{ route('fichas.destroy', $ficha->Codigo) }}" method="POST" class="d-inline" >
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit"
-                                        class="btn btn-danger btn-sm"
-                                        onclick="
-                                                 event.preventDefault();
-                                                 swal({title: '¿Estás seguro de eliminar?',
-                                                 text: 'Una vez eliminado, no se podrá recuperar',
-                                                 icon: 'warning', buttons: true, dangerMode: true}).
-                                                 then((eliminar) => { if (eliminar){form.submit();}
-                                                 else {swal('Elemento no eliminado');}});
-                                                 "
-                                        style="width: 30px; height: 30px; border-radius: 50%"
-                                        >
-                                        <i class="fas fa-trash-alt"></i>
-                                </button>
-                            </form>
-                        </td>
-                    </tr>
-                    @endforeach
-                @endforeach
+            @foreach ($fichas as $ficha)
+                @php
+                    $modalidadFicha = $modalidades->where('Codigo_modalidad', $ficha->Codigo_modalidad)->first();
+                @endphp
+                <tr>
+                    <td>{{ $ficha->Codigo }}</td>
+                    <td>{{ $ficha->fich_Inicio }}</td>
+                    <td>{{ $ficha->fich_Fin }}</td>
+                    <td>{{ $ficha->fich_Etapa }}</td>
+                    <td>{{ $ficha->Codigo_programa }}</td>
+                    <td>{{ $modalidadFicha->mod_Denominacion }}</td>
+                    <td>{{ $ficha->Codigo_centro }}</td>
+                    <td>
+                        <div class="d-flex">
+                            <progress class="my-auto" id="progreso" value="{{ $ficha->diasPorcentaje }}" max="100"></progress>
+                            <label class="pl-2 my-auto" for="progreso">{{ $ficha->diasPorcentaje }}%</label>
+                        </div>
+                        @if ($ficha->diasRestantes === 0)
+                            <small>Terminado</small>
+                        @else
+                            <small>{{ $ficha->diasRestantes . " de" }} {{ $ficha->diasTotal . " Días" }}</small>
+                        @endif
+                    </td>
+                    <td class="d-flex">
+                        <a href="{{ route('fichas.edit', $ficha->Codigo) }}" class="btn btn-primary btn-sm mr-2"
+                           style="width: 30px; height: 30px; border-radius: 50%">
+                            <i class="fas fa-pen"></i>
+                        </a>
+                        <form action="{{ route('fichas.destroy', $ficha->Codigo) }}" method="POST" class="d-inline">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit" class="btn btn-danger btn-sm"
+                                    onclick="event.preventDefault();
+                                 swal({
+                                    title: '¿Estás seguro de eliminar?',
+                                    text: 'Una vez eliminado, no se podrá recuperar',
+                                    icon: 'warning',
+                                    buttons: true,
+                                    dangerMode: true
+                                 }).then((eliminar) => {
+                                    if (eliminar) {
+                                        form.submit();
+                                    } else {
+                                        swal('Elemento no eliminado');
+                                    }
+                                 });"
+                                    style="width: 30px; height: 30px; border-radius: 50%">
+                                <i class="fas fa-trash-alt"></i>
+                            </button>
+                        </form>
+                    </td>
+                </tr>
+            @endforeach
             </tbody>
 
         </table>
